@@ -40,3 +40,9 @@ usr
 # generated files
 include/restclient-cpp/version.h
 arm-poky-linux-gnueabi-libtool
+
+# gitdev
+.idea
+cmake-build-*/
+CMakeFiles/
+
