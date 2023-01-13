@@ -1,9 +1,7 @@
 
 cmake_minimum_required(VERSION 3.12.0)
 
-# redirect dependency resolution and install output
 set(CMAKE_INSTALL_PREFIX "$ENV{GTI_CMAKE_REPO}")
-set(CMAKE_PREFIX_PATH "$ENV{GTI_CMAKE_REPO}")
 
 project(restclient-cpp
   VERSION 0.5.2
