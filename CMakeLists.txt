@@ -46,7 +46,7 @@ if(COMPILE_TYPE STREQUAL "SHARED")
   set(BUILD_SHARED_LIBS YES)
 endif()
 
-add_library(restclient-cpp
+add_library(restclient-cpp STATIC
   source/restclient.cc
   source/connection.cc
   source/helpers.cc
