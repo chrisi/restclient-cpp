@@ -10,10 +10,13 @@ pipeline {
       }
     }
     stage('Init Package-Manager') {
-      steps {
-        if(!fileExists("vcpkg")) {
-          sh("git clone https://github.com/Microsoft/vcpkg.git")
+      when {
+        expression {
+          return !fileExists("vcpkg")
         }
+      }
+      steps {
+        sh("git clone https://github.com/Microsoft/vcpkg.git")
         dir("vcpkg") {
           sh("./bootstrap-vcpkg.sh")
           sh("./vcpkg integrate install")
