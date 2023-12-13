@@ -11,7 +11,9 @@ pipeline {
     }
     stage('Init Package-Manager') {
       steps {
-        sh("git clone https://github.com/Microsoft/vcpkg.git")
+        if(!fileExists("vcpkg")) {
+          sh("git clone https://github.com/Microsoft/vcpkg.git")
+        }
         dir("vcpkg") {
           sh("./bootstrap-vcpkg.sh")
           sh("./vcpkg integrate install")
