@@ -4,6 +4,11 @@ pipeline {
     GTI_CMAKE_REPO = '/tmp'
   }
   stages {
+    stage('Download Dependencies') {
+      steps {
+        sh("apt update && apt install -y curl zip unzip tar")
+      }
+    }
     stage('Init Package-Manager') {
       steps {
         sh("git clone https://github.com/Microsoft/vcpkg.git")
