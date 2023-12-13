@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Install curl') {
       steps {
-        sh("vcpkg install curl")
+        sh("/opt/vcpkg install curl")
       }
     }
     stage('Build Project') {
