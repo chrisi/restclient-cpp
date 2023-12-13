@@ -167,11 +167,14 @@ gtest_discover_tests(test-program
 
 endif()
 
+set(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGE_NAME ${CMAKE_PROJECT_NAME})
+set(CPACK_PACKAGE_VENDOR "GTIDEV")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Christian Gebauer")
 
-# TODO: Setup ctest here for valgrind and CI
+set(CPACK_PACKAGE_FILE_NAME "restclient-cpp") #provide a static name for curl upload in Jenkinsfile
 
-# TODO: Setup cpack here for automatic packaging.
-#       Note most of the work is already done above due to use of properties and install commands.
+include(CPack)
 
 include(FeatureSummary)
 feature_summary(WHAT ALL)

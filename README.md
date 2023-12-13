@@ -1,13 +1,12 @@
 # REST client for C++
-[![Build Status](https://travis-ci.org/mrtazz/restclient-cpp.svg?branch=master)](https://travis-ci.org/mrtazz/restclient-cpp)
-[![Coverage Status](https://coveralls.io/repos/mrtazz/restclient-cpp/badge.svg?branch=master&service=github)](https://coveralls.io/github/mrtazz/restclient-cpp?branch=master)
-[![Packagecloud](https://img.shields.io/badge/packagecloud-available-brightgreen.svg)](https://packagecloud.io/mrtazz/restclient-cpp)
-[![doxygen](https://img.shields.io/badge/doxygen-reference-blue.svg)](http://code.mrtazz.com/restclient-cpp/ref/)
-[![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
+![Build Status](https://jenkins.gtidev.net/buildStatus/icon?job=restclient-cpp)
 
 ## About
 This is a simple REST client for C++. It wraps [libcurl][] for HTTP requests.
+
+
+
 
 ## Usage
 restclient-cpp provides two ways of interacting with REST endpoints. There is
@@ -15,6 +14,26 @@ a simple one, which doesn't need you to configure an object to interact with
 an API. However the simple way doesn't provide a lot of configuration options
 either. So if you need more than just a simple HTTP call, you will probably
 want to check out the advanced usage.
+
+### Install
+```shell
+cd cmake-build-release && cmake -DCMAKE_INSTALL_PREFIX=/home/chrisi/libs --install ./
+```
+
+### Package
+```shell
+cd cmake-build-release && cpack
+```
+
+### Integration
+
+```shell
+apt get install restclient-cpp
+```
+```cmake
+find_package(restclient-cpp REQUIRED)
+target_link_libraries(${PROJECT_NAME} restclient-cpp ...)
+```
 
 ### Simple Usage
 The simple API is just some static methods modeled after the most common HTTP
