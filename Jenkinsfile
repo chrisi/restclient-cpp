@@ -4,15 +4,6 @@ pipeline {
     GTI_CMAKE_REPO = '/tmp'
   }
   stages {
-    stage('Build Project') {
-      steps {
-        sh("mkdir -p build")
-        dir("build") {
-          sh("cmake -DCMAKE_BUILD_TYPE=Release ..")
-          sh("cmake --build .")
-        }
-      }
-    }
     stage('Init Package-Manager') {
       steps {
         sh("git clone https://github.com/Microsoft/vcpkg.git")
@@ -26,6 +17,15 @@ pipeline {
       steps {
         dir("vcpkg") {
           sh("./vcpkg install curl")
+        }
+      }
+    }
+    stage('Build Project') {
+      steps {
+        sh("mkdir -p build")
+        dir("build") {
+          sh("cmake -DCMAKE_BUILD_TYPE=Release ..")
+          sh("cmake --build .")
         }
       }
     }
