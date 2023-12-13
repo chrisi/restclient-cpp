@@ -4,38 +4,16 @@ pipeline {
     GTI_CMAKE_REPO = '/tmp'
   }
   stages {
-    stage('Download Dependencies') {
-      steps {
-        sh("apt update && apt install -y curl zip unzip tar")
-      }
-    }
-    stage('Init Package-Manager') {
-//       when {
-//         expression {
-//           return !fileExists("vcpkg")
-//         }
-//       }
-      steps {
-        sh("rm -rf vcpkg")
-        sh("git clone https://github.com/Microsoft/vcpkg.git")
-        dir("vcpkg") {
-          sh("./bootstrap-vcpkg.sh")
-          sh("./vcpkg integrate install")
-        }
-      }
-    }
     stage('Install curl') {
       steps {
-        dir("vcpkg") {
-          sh("./vcpkg install curl")
-        }
+        sh("vcpkg install curl")
       }
     }
     stage('Build Project') {
       steps {
         sh("mkdir -p build")
         dir("build") {
-          sh("cmake -DCMAKE_BUILD_TYPE=Release ..")
+          sh("cmake -DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release ..")
           sh("cmake --build .")
         }
       }
