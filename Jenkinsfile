@@ -13,6 +13,22 @@ pipeline {
         }
       }
     }
+    stage('Init Package-Manager') {
+      steps {
+        sh("git clone https://github.com/Microsoft/vcpkg.git")
+        dir("vcpkg") {
+          sh("./bootstrap-vcpkg.sh")
+          sh("./vcpkg integrate install")
+        }
+      }
+    }
+    stage('Install curl') {
+      steps {
+        dir("vcpkg") {
+          sh("./vcpkg install curl")
+        }
+      }
+    }
     stage('Install Project') {
       steps {
         dir("build") {
