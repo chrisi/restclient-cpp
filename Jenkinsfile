@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Install curl') {
       steps {
-        sh("/opt/vcpkg install curl")
+        sh("/home/jenkins/vcpkg install curl")
       }
     }
     stage('Build Project') {
