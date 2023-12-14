@@ -36,7 +36,7 @@ pipeline {
     stage('Upload Package') {
       steps {
         dir("build") {
-          sh('curl -u "deb:latrop0815" -H "Content-Type: multipart/form-data" --data-binary "@./rest-client.deb" "https://nexus.gtidev.net/repository/gtideb/"')
+          sh('curl -u "deb:latrop0815" -H "Content-Type: multipart/form-data" --data-binary "@./restclient-cpp.deb" "https://nexus.gtidev.net/repository/gtideb/"')
         }
       }
     }
