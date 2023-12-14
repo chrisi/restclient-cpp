@@ -2,6 +2,7 @@ pipeline {
   agent  { label 'cloud-arm64' }
   environment {
     GTI_CMAKE_REPO = '/tmp'
+    VCPKG_FORCE_SYSTEM_BINARIES = 1
   }
   stages {
     stage('Install curl') {
