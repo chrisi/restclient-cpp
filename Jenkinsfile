@@ -7,6 +7,7 @@ pipeline {
     stage('Install curl') {
       steps {
         sh("users")
+        sh("sleep 100")
         sh("/home/jenkins/vcpkg install curl")
       }
     }
