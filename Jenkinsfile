@@ -7,9 +7,7 @@ pipeline {
   stages {
     stage('Install curl') {
       steps {
-        sh("users")
-        sh("sleep 5")
-        sh("/home/jenkins/vcpkg/vcpkg install curl")
+        sh("/opt/vcpkg/vcpkg install curl")
       }
     }
     stage('Build Project') {
@@ -24,7 +22,7 @@ pipeline {
     stage('Install Project') {
       steps {
         dir("build") {
-          sh("sudo make install")
+          sh("make install")
         }
       }
     }
