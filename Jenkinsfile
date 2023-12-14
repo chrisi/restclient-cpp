@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Install curl') {
       steps {
-        sh("users")
+        sh('read -t 60 -p "I am going to wait for 1 minute only ...')
         sh("/opt/vcpkg install curl")
       }
     }
