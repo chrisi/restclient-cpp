@@ -24,7 +24,7 @@ pipeline {
     stage('Install Project') {
       steps {
         dir("build") {
-          sh("make install")
+          sh("sudo make install")
         }
       }
     }
